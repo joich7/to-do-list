@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
-import TodoList from './TodoList';
-import AddTodoBtn from './AddTodoBtn';
-import RemoveButton from './RemoveButton';
+import TodoList from './components/TodoList';
+import AddTodoBtn from './components/AddTodoBtn';
+import RemoveButton from './components/RemoveButton';
 
 
 function App() {
-  const [todos, setTodos] = useState([{text: "Hello", checked: false, id: 1},{text: "Hi", checked: false, id: 2}])
+  const [todos, setTodos] = useState([])
   console.log(todos)
   
   function changeChecked(id){
@@ -22,8 +22,9 @@ function App() {
   }
 
   return (
-    <div className="App container">
+    <div className="App container ">
       <h1>Todo List App</h1>
+      <p>{todos.length==0? "add a new task": "no completed tasks"}</p>
       
       <AddTodoBtn setTodos={setTodos} todos={todos} />
       
@@ -31,6 +32,8 @@ function App() {
       <div className='row'>
           <TodoList todos={todos} setTodos={setTodos} changeChecked={changeChecked}/>
       </div>
+
+
     </div>
   );
 }
